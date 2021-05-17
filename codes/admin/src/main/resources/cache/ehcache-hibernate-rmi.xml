@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<ehcache updateCheck="false" name="hibernateCache">
+<!--  
+	<cacheManagerPeerProviderFactory class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory"
+		properties="peerDiscovery=manual, socketTimeoutMillis=2000, rmiUrls=//localhost:40001/hibernateCache" />
+	<cacheManagerPeerListenerFactory class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory"
+		properties="hostName=localhost, port=40000, socketTimeoutMillis=2000"/>-->
+
+	<cacheManagerPeerProviderFactory class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory"
+		properties="peerDiscovery=automatic,multicastGroupAddress=230.0.0.1, multicastGroupPort=4446" />
+	<cacheManagerPeerListenerFactory class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory" />
+	
+	<diskStore path="java.io.tmpdir/sopcms/ehcache/hibernate" />
+
+	<!-- DefaultCache setting. -->
+	<defaultCache maxEntriesLocalHeap="100" eternal="false" timeToIdleSeconds="300" timeToLiveSeconds="600" 
+		overflowToDisk="true" maxEntriesLocalDisk="100000" >
+		<cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+			properties="replicatePuts=false,replicateUpdatesViaCopy=false" />
+    </defaultCache>
+	
+</ehcache>

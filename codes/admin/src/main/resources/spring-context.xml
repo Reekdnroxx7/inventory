@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd"
+       default-autowire="byName" default-lazy-init="false">
+    <!-- 使用annotation 自动注册bean, 并保证@Required、@Autowired的属性被注入 -->
+    <!-- 加载service,此时要排除要controller,因为controller已经spring-mvc中加载过了 -->
+    <context:component-scan base-package="com.x404">
+        <context:exclude-filter type="annotation"
+                                expression="org.springframework.stereotype.Controller"/>
+
+    </context:component-scan>
+    <context:property-placeholder
+            location="classpath:dbconfig.properties,classpath:sysConfig.properties, classpath*:rabbit-mq.properties"/>
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+
+
+
+    <!-- 缓存配置 -->
+    <!-- spring thread pool executor -->
+    <bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+        <!-- 线程池维护线程的最少数量 -->
+        <property name="corePoolSize" value="100" />
+        <!-- 允许的空闲时间 -->
+        <property name="keepAliveSeconds" value="200" />
+        <!-- 线程池维护线程的最大数量 -->
+        <property name="maxPoolSize" value="500" />
+        <!-- 对拒绝task的处理策略 -->
+        <property name="rejectedExecutionHandler">
+            <bean class="java.util.concurrent.ThreadPoolExecutor$CallerRunsPolicy" />
+        </property>
+    </bean>
+    <bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" autowire="no"
+          lazy-init="false"/>
+    <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean"/>
+    <bean class="com.x404.beat.core.util.SpringContextHolder"></bean>
+
+    <bean id='fieldDecker' class="com.x404.beat.manage.codeg.SimpleFieldDecker"/>
+</beans>
