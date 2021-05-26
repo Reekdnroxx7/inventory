@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.x404.beat.manage.codeg.dao.IDatasourceConfigDao">
-	<resultMap id="BaseResultMap" type="com.x404.beat.manage.codeg.entity.DatasourceConfig" >
+<mapper namespace="com.x404.admin.manage.codeg.dao.IDatasourceConfigDao">
+	<resultMap id="BaseResultMap" type="com.x404.admin.manage.codeg.entity.DatasourceConfig" >
 		<id column="id" property="id" jdbcType="VARCHAR" />
 		<result column="url" property="url" jdbcType="VARCHAR" />
 		<result column="db_type" property="dbType" jdbcType="CHAR" />
@@ -71,7 +71,7 @@
   id,url,db_type,user_name,password,host
   </sql>
 
-  <select id="selectByExample" parameterType="com.x404.beat.manage.codeg.entity.DatasourceConfigExample"
+  <select id="selectByExample" parameterType="com.x404.admin.manage.codeg.entity.DatasourceConfigExample"
   resultMap="BaseResultMap">
     select
     <if test="distinct">
@@ -110,7 +110,7 @@
 	 id= #{id,jdbcType=VARCHAR}
   </delete>
 
-  <delete id="deleteByExample" parameterType="com.x404.beat.manage.codeg.entity.DatasourceConfigExample" >
+  <delete id="deleteByExample" parameterType="com.x404.admin.manage.codeg.entity.DatasourceConfigExample" >
     delete from codeg_datasource_config
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -118,7 +118,7 @@
   </delete>
 
   <insert id="insert"
-            parameterType="com.x404.beat.manage.codeg.entity.DatasourceConfig" >
+            parameterType="com.x404.admin.manage.codeg.entity.DatasourceConfig" >
 
 	insert into codeg_datasource_config
 	(
@@ -149,12 +149,12 @@
   </foreach>
   </insert>
 
-  <select id="countByExample" parameterType="com.x404.beat.manage.codeg.entity.DatasourceConfigExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.x404.admin.manage.codeg.entity.DatasourceConfigExample" resultType="java.lang.Integer">
     select count(*) from codeg_datasource_config
       <include refid="Example_Where_Clause" />
   </select>
 
- <update id="updateByKeySelective" parameterType="com.x404.beat.manage.codeg.entity.DatasourceConfig">
+ <update id="updateByKeySelective" parameterType="com.x404.admin.manage.codeg.entity.DatasourceConfig">
     update codeg_datasource_config
      <set >
       <if test="id != null" >

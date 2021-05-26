@@ -82,7 +82,7 @@
     </listener>
     <listener>
         <description>system 监听器</description>
-        <listener-class>com.x404.beat.manage.sys.listener.InitListener</listener-class>
+        <listener-class>com.x404.admin.manage.sys.listener.InitListener</listener-class>
     </listener>
 
     <servlet>

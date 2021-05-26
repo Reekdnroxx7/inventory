@@ -16,7 +16,8 @@
 			var viewport = new Ext.Viewport({
 				layout : 'fit',
 				items : [${entityName}.gridPanel]
-			});		
+			});
+			${entityName}.query();
 		});
 </script>
 </body>

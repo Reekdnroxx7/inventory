@@ -3,8 +3,8 @@
 <%@ include file="/context/mytags.jsp"%>
 <%@include file="/context/extjs.jsp"%>
 <%@include file="/context/system.jsp"%>
-<%@page import="com.x404.beat.manage.sys.tools.UserInfo"%>
-<%@page import="com.x404.beat.manage.sys.utils.UserUtils"%>
+<%@page import="com.x404.admin.manage.sys.tools.UserInfo"%>
+<%@page import="com.x404.admin.manage.sys.utils.UserUtils"%>
 <%
 	UserInfo userInfo = UserUtils.getCurrentUserInfo();
 %>
@@ -19,7 +19,7 @@
 		src="${ctx}/webpage/main/extjs/js/center.js">
 </script>
 	<head>
-		<title>Jeecp</title>
+		<title>JEECP库存管理平台</title>
 	</head>
 <script type="text/javascript">
 var loginName = '<%=userInfo.getUser().getLoginName()%>'
@@ -42,7 +42,7 @@ var top_panel = Ext.create('Ext.container.Container', {
 	},
 	items : [
 			{
-				html : 'Jeecp工作平台',
+				html : 'Jeecp库存管理',
 				width : '900',
 				style : 'letter-spacing:8px;padding-left:50px;font-size:30px;font-family:华文行楷;'
 			},

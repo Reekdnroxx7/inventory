@@ -38,7 +38,7 @@
 			</list>
 		</property>
 		<property name="webBindingInitializer">
-			<bean class="com.x404.beat.core.databind.MyWebBinding" />
+			<bean class="com.x404.admin.core.databind.MyWebBinding" />
 		</property>
 	</bean>
 	<!-- 默认的视图解析器 在上边的解析错误时使用 (默认使用html)- -->
@@ -74,7 +74,7 @@
 
 	<!-- 异常处理类 -->
 	<bean id="exceptionHandler"
-		class="com.x404.beat.core.exception.MyExceptionHandler" />
+		class="com.x404.admin.core.exception.MyExceptionHandler" />
 	<!-- 系统错误转发配置[并记录错误日志] -->
 	<bean
 		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
@@ -91,7 +91,7 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />
-			<bean class="com.x404.beat.manage.sys.interceptors.AuthInterceptor">
+			<bean class="com.x404.admin.manage.sys.interceptors.AuthInterceptor">
 				<property name="excludeUrls">
 					<list>
 						<value>/*.sdict</value>

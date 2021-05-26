@@ -11,9 +11,8 @@ ${entityName}.${field.javaFieldName}Box = Ext.create("Sys.DictBox", {
 </#list>
 //方法
 ${entityName}.query = function(){
-	var params = ${entityName}.getParams("queryBar");
+
 	${entityName}.store.load({
-		params : params ,
 		callback : function(records, operation, success) {
 			if (success == false) {
 				Ext.Msg.alert("错误", ${entityName}.store.proxy.reader.jsonData.message );
@@ -39,9 +38,9 @@ ${entityName}.getParams = function (){
 						params[name]=value;
 					}
 				}
-			}	
+			}
 		);
-	}	
+	}
 	return params;
 };
 
@@ -56,9 +55,9 @@ ${entityName}.reset = function(){
 					var name = item['name'];
 					item.setValue('');
 				}
-			}	
+			}
 		);
-	}	
+	}
 };
 
 ${entityName}.save = function (){
@@ -103,14 +102,14 @@ ${entityName}.del = function (grid, rowIndex, colIndex){
 			        }
 			    }
 			});
-		}		
+		}
 	});
 };
 
 ${entityName}.store = Ext.create('Ext.data.Store',{
 	fields:[
 	<#list fields as field>
-		'${field.javaFieldName}'<#if field_has_next>,</#if>	
+		'${field.javaFieldName}'<#if field_has_next>,</#if>
 	</#list>
 	],
 	pageSize:20,
@@ -124,7 +123,10 @@ ${entityName}.store = Ext.create('Ext.data.Store',{
         }
     }
 });
-${entityName}.store.load();
+${entityName}.store.on("beforeload",function (source, operation) {
+	var params = ${entityName}.getParams("queryBar");
+	operation.params = Ext.apply(operation.params || {}, params);
+});
 
 ${entityName}.gridPanel = Ext.create('Ext.grid.Panel',{
 	title:'${description}',
@@ -144,18 +146,18 @@ ${entityName}.gridPanel = Ext.create('Ext.grid.Panel',{
 		hidden:true,
 		</#if>
 		width:200
-	},	
-	</#list>	
-	{  
+	},
+	</#list>
+	{
 		xtype:'actioncolumn',
 		text : '操作',
 		align: 'center',
-		items:[{iconCls : 'Applicationedit',tooltip : '修改',handler :  
+		items:[{iconCls : 'Applicationedit',tooltip : '修改',handler :
 		function(grid, rowIndex, colIndex) {
 		var rec = grid.getStore().getAt(rowIndex);
 		${entityName}.formWin.showUpdate(rec);}},
 		'-',
-		{iconCls:'delete',tooltip:'删除',handler:${entityName}.del} 
+		{iconCls:'delete',tooltip:'删除',handler:${entityName}.del}
 		       ]
      }],
 	dockedItems:[{
@@ -167,7 +169,7 @@ ${entityName}.gridPanel = Ext.create('Ext.grid.Panel',{
 				<#if field.queryType !='no'>
 				<#if first != 'true'>
 					,'-',
-				</#if>				
+				</#if>
 				 <#if field.xtype == 'dictcombobox'>
 				 	'${field.displayName}:',new Sys.DictBox({name : '${field.javaFieldName}|eq',groupCode : '${field.dictGroupCode}'})
 				 <#else>
@@ -191,7 +193,7 @@ ${entityName}.gridPanel = Ext.create('Ext.grid.Panel',{
 	    ]
     },{
         xtype: 'pagingtoolbar',
-        store: ${entityName}.store,  
+        store: ${entityName}.store,
         dock: 'bottom',
         displayInfo: true
     }]
@@ -205,28 +207,28 @@ ${entityName}.formPanel = Ext.create('Ext.form.Panel',{
 		 <#if field.xtype == 'dictcombobox'>
 		 ${entityName}.${field.javaFieldName}Box,
 		 <#else>
-	     {fieldLabel:'${field.displayName}',xtype:'${field.xtype}',<#if field.xtype == 'datefield'>format:'Ymd',</#if>name:'${field.javaFieldName}',allowBlank:false},        
+	     {fieldLabel:'${field.displayName}',xtype:'${field.xtype}',<#if field.xtype == 'datefield'>format:'Ymd',</#if>name:'${field.javaFieldName}',allowBlank:false},
 		 </#if>
         </#if>
         </#list>
        <#if primaryKey??>
             <#if primaryKey.editable>
             <#else>
-         new Ext.form.Hidden({${primaryKey.javaFieldName}:'_saveType'}),
+         new Ext.form.Hidden({name:'${primaryKey.javaFieldName}'}),
             </#if>
        </#if>
        new Ext.form.Hidden({name:'_saveType'})
 	]
 });
 
-	
-	
+
+
 ${entityName}.formWin = Ext.create('Ext.window.Window',{
 	title:'${description}',
     layout: 'fit',
     items: ${entityName}.formPanel,
     closeAction : 'hide',
-    showAdd: function(){   
+    showAdd: function(){
     	var form = this.child('form');
     	form.getForm().reset();
 		form.getForm().findField("_saveType").setValue("add");

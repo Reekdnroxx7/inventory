@@ -24,7 +24,6 @@
 
         </property>
 
-
     </bean>
 
     <!--  Mapper 扫描 -->
@@ -35,6 +34,6 @@
 
         <property name="basePackage" value="com.x404"/>
         <property name="annotationClass"
-                  value="com.x404.beat.core.mybatis.annotation.MyBatisRepository"/>
+                  value="com.x404.admin.core.mybatis.annotation.MyBatisRepository"/>
     </bean>
 </beans>

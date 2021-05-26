@@ -33,7 +33,7 @@
             <bean class="org.hibernate.cfg.ImprovedNamingStrategy"/>
         </property>
         <!-- 注解方式配置 -->
-        <property name="packagesToScan" value="com.x404.beat.manage"/>
+        <property name="packagesToScan" value="com.x404.admin.manage"/>
     </bean>
 
 
