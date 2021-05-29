@@ -18,7 +18,8 @@
 			var viewport = new Ext.Viewport({
 				layout : 'border',
 				items : [grid_panel,center_panel]
-			});		
+			});
+			query();
 		});
 </script>
 </body>

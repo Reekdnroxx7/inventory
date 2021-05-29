@@ -11,7 +11,7 @@ var store = Ext.create('Ext.data.Store', {
 				}
 			}
 		});
-store.load();
+
 var columns = [{
 			xtype : 'rownumberer'
 		}, {
@@ -36,10 +36,6 @@ var columns = [{
 							detailWin.showUpdate(rec);
 						},
 						iconCls : 'Applicationedit'
-					}, '-', {
-						iconCls : 'CogAdd',
-						tooltip : '菜单设置',
-						handler : showMenu
 					}]
 		}];
 
@@ -78,9 +74,15 @@ var grid_panel = Ext.create('Ext.grid.Panel', {
 						store : store,
 						dock : 'bottom',
 						displayInfo : true
-					}]
-		});
-function showMenu(grid, rowIndex, colIndex) {
+			}],
+		listeners: {
+			"itemclick": function (me, record, item, index, e, eOpts) {
+				showMenu(grid_panel, index);
+			}
+		}
+	}
+);
+function showMenu(grid, rowIndex) {
 	var rec = grid.getStore().getAt(rowIndex);
 	center_panel.loadRecord(rec);
 }
@@ -104,7 +106,7 @@ function del(grid, rowIndex) {
 					});
 		}
 	});
-	
+
 }
 
 function query() {
