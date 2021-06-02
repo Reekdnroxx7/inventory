@@ -1,85 +1,61 @@
 package com.x404.busi.entity;
 
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+
+import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
- * @Title: Materiel
- * @author
+ * @author chaox
  * @version V1.0
  *
  */
 public class Materiel implements Serializable {
-    private static final long serialVersionUID = 1L;
-	/**主键*/
-	private String id;
-	/**工序名称*/
-	private String procedure_name;
 	/**物料编号*/
-	private String material_code;
+	@Id
+	private String code;
 	/**物料名称*/
-	private String material_name;
-	/**数量*/
-	private Integer quantity;
+	private String name;
 	/**单位*/
 	private String unit;
 	/**位置*/
 	private String position;
 	/**创建时间*/
+	@CreatedDate
 	private java.util.Date create_date;
 	/**创建人*/
+	@CreatedBy
 	private String create_by;
 	/***/
+	@LastModifiedDate
 	private java.util.Date update_date;
 	/***/
+	@LastModifiedBy
 	private String update_by;
 	/**备注*/
 	private String remarks;
 	public Materiel(){
 		super();
 	}
-	public Materiel(String id){
-		this();
-		this.id= id;
+
+
+	public String getCode() {
+		return code;
 	}
 
-	public String getId(){
-		return id;
+	public void setCode(String code) {
+		this.code = code;
 	}
 
-	public void setId(String id){
-		this.id = id;
+	public String getName() {
+		return name;
 	}
 
-	public String getProcedure_name(){
-		return procedure_name;
-	}
-
-	public void setProcedure_name(String procedure_name){
-		this.procedure_name = procedure_name;
-	}
-
-	public String getMaterial_code(){
-		return material_code;
-	}
-
-	public void setMaterial_code(String material_code){
-		this.material_code = material_code;
-	}
-
-	public String getMaterial_name(){
-		return material_name;
-	}
-
-	public void setMaterial_name(String material_name){
-		this.material_name = material_name;
-	}
-
-	public Integer getQuantity(){
-		return quantity;
-	}
-
-	public void setQuantity(Integer quantity){
-		this.quantity = quantity;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getUnit(){

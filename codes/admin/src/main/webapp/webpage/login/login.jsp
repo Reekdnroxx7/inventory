@@ -74,9 +74,9 @@
                 <input name="userKey" type="hidden" id="userKey"
                        value="D1B5CC2FE46C4CC983C073BCA897935608D926CD32992B5900"/>
                 <div class="tip"><input class="userName" name="loginName" type="text" id="loginName" title="用户名"
-                                        value='admin' iscookie="true" nullmsg="请输入用户名!"/></div>
+                                        value='' iscookie="true" nullmsg="请输入用户名!"/></div>
                 <div class="tip"><input class="password" name="password" type="password" id="password" title="密码"
-                                        value='123456' nullmsg="请输入密码!"/></div>
+                                        value='' nullmsg="请输入密码!"/></div>
                 <div id='checkcodediv' style=" vertical-align:middle"></div>
                 <div id='twodimcode' style="float: right; margin-right: -0px;"><img
                         src='twodimenCode.sdict?method=getTwoDimCode'></div>
@@ -107,7 +107,7 @@
 <div class="clear"></div>
 <div id="versionBar">
     <div class="copyright">&copy; 版权所有 <span class="tip"><a href="#" title="JEECP">jeecp</a> (推荐使用IE8+,谷歌浏览器可以获得更快,更安全的页面响应速度)技术支持:<a
-            href="#" title="JEECP 微云快速开发平台">jeecp</a></span></div>
+            href="#" title="JEECP">jeecp</a></span></div>
 </div>
 <!-- Link JScript-->
 <script type="text/javascript" src="${ctx }/plug-in/jquery/jquery-1.8.3.min.js"></script>
