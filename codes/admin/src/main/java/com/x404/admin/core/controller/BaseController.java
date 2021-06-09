@@ -6,7 +6,7 @@
 package com.x404.admin.core.controller;
 
 import com.x404.admin.core.databind.DateConvertEditor;
-import org.apache.commons.lang3.StringEscapeUtils;
+import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.ui.Model;
@@ -107,7 +107,7 @@ public abstract class BaseController {
         binder.registerCustomEditor(String.class, new PropertyEditorSupport() {
             @Override
             public void setAsText(String text) {
-                setValue(text == null ? null : StringEscapeUtils.escapeHtml4(text.trim()));
+                setValue(text == null ? null : StringEscapeUtils.escapeHtml(text.trim()));
             }
 
             @Override

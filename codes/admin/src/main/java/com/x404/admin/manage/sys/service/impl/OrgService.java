@@ -2,8 +2,8 @@ package com.x404.admin.manage.sys.service.impl;
 
 import com.x404.admin.manage.sys.dao.IOrgDao;
 import com.x404.admin.manage.sys.service.IOrgService;
-import com.x404.admin.core.hibernate.query.HibernateQuery;
-import com.x404.admin.core.page.ExPageList;
+import com.x404.module.basedao.hibernate.HibernateQuery;
+import com.x404.module.basedao.query.PageList;
 import com.x404.admin.manage.sys.entity.Org;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +50,7 @@ public class OrgService implements IOrgService
         return orgDao.findById(id);
     }
 
-    public ExPageList<Org> getPageList(HibernateQuery cq, ExPageList<Org> page) {
+    public PageList<Org> getPageList(HibernateQuery cq, PageList<Org> page) {
         return orgDao.getPageList(cq, page);
     }
 

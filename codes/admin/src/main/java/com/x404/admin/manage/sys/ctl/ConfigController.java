@@ -1,10 +1,10 @@
 package com.x404.admin.manage.sys.ctl;
 
 import com.x404.admin.core.controller.BaseController;
-import com.x404.admin.core.hibernate.query.HibernateQuery;
+import com.x404.module.basedao.hibernate.HibernateQuery;
 import com.x404.admin.core.json.AjaxJson;
-import com.x404.admin.core.page.ExPageList;
-import com.x404.admin.core.query.HibernateQueryHelper;
+import com.x404.module.basedao.query.PageList;
+import com.x404.module.basedao.query.HibernateQueryHelper;
 import com.x404.admin.manage.sys.entity.Config;
 import com.x404.admin.manage.sys.tools.ConfigManager;
 import com.x404.admin.manage.sys.service.IConfigService;
@@ -41,7 +41,7 @@ public class ConfigController extends BaseController {
 
     @RequestMapping(params = "method=listConfig")
     @ResponseBody
-    public ExPageList<Config> listConfig(HttpServletRequest request, ExPageList<Config> page) {
+    public PageList<Config> listConfig(HttpServletRequest request, PageList<Config> page) {
         HibernateQuery cq = HibernateQueryHelper.generateFromRequest(request);
         return configService.getPageList(cq, page);
     }

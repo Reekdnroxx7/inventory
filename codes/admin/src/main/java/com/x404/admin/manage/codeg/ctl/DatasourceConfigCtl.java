@@ -3,16 +3,16 @@ package com.x404.admin.manage.codeg.ctl;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.x404.admin.core.controller.BaseController;
 import com.x404.admin.core.json.AjaxJson;
+import com.x404.admin.core.util.IpUtil;
+import com.x404.admin.core.util.SpringContextHolder;
+import com.x404.module.utils.UUIDUtils;
 import com.x404.admin.manage.codeg.FieldDecker;
 import com.x404.admin.manage.codeg.entity.DatasourceConfig;
 import com.x404.admin.manage.codeg.model.FieldConfig;
 import com.x404.admin.manage.codeg.model.TableConfig;
+import com.x404.admin.manage.codeg.service.impl.DatasourceConfigService;
 import com.x404.admin.manage.codeg.utils.CodegUtils;
-import com.x404.admin.manage.codeg.service.IDatasourceConfigService;
-import com.x404.admin.core.page.ExPageList;
-import com.x404.admin.core.util.IpUtil;
-import com.x404.admin.core.util.SpringContextHolder;
-import com.x404.admin.core.util.UUIDUtils;
+import com.x404.module.basedao.query.PageList;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,10 +30,10 @@ import java.util.Map;
 @RequestMapping("/datasourceConfig")
 public class DatasourceConfigCtl extends BaseController {
     private final static Log LOG = LogFactory.getLog(DatasourceConfigCtl.class);
-    private IDatasourceConfigService datasourceConfigService;
+    private DatasourceConfigService datasourceConfigService;
 
     @Autowired
-    public void setDatasourceConfigService(IDatasourceConfigService datasourceConfigService) {
+    public void setDatasourceConfigService(DatasourceConfigService datasourceConfigService) {
         this.datasourceConfigService = datasourceConfigService;
     }
 
@@ -54,8 +54,8 @@ public class DatasourceConfigCtl extends BaseController {
     /**
      * 用mybatis实现页面的分页显示
      */
-    public ExPageList<DatasourceConfig> listDatasourceConfig(HttpServletRequest request) {
-        ExPageList<DatasourceConfig> pageList = new ExPageList<DatasourceConfig>();
+    public PageList<DatasourceConfig> listDatasourceConfig(HttpServletRequest request) {
+        PageList<DatasourceConfig> pageList = new PageList<DatasourceConfig>();
         Map<String, DruidDataSource> dataSourceMap = SpringContextHolder.getBeansOfType(DruidDataSource.class);
         List<DatasourceConfig> findAll = datasourceConfigService.selectAll();
         for (Map.Entry<String, DruidDataSource> entry : dataSourceMap.entrySet()) {
@@ -127,10 +127,10 @@ public class DatasourceConfigCtl extends BaseController {
 
     @RequestMapping(params = "method=listCodegTable")
     @ResponseBody
-    public ExPageList<TableConfig> listCodegTable(HttpServletRequest request, @RequestParam("dataSourceId") String dataSourceId) {
+    public PageList<TableConfig> listCodegTable(HttpServletRequest request, @RequestParam("dataSourceId") String dataSourceId) {
         DatasourceConfig config = getDataSourceConfig(dataSourceId);
         List<TableConfig> allTable = CodegUtils.getAllTable(config);
-        ExPageList<TableConfig> pageList = new ExPageList<TableConfig>(allTable);
+        PageList<TableConfig> pageList = new PageList<TableConfig>(allTable);
         return pageList;
     }
 
@@ -147,13 +147,13 @@ public class DatasourceConfigCtl extends BaseController {
 
     @RequestMapping(params = "method=listCodegField")
     @ResponseBody
-    public ExPageList<FieldConfig> listCodegField(@RequestParam("dataSourceId") String dataSourceId, HttpServletRequest request,
-                                                  String tableName) {
+    public PageList<FieldConfig> listCodegField(@RequestParam("dataSourceId") String dataSourceId, HttpServletRequest request,
+                                                String tableName) {
         DatasourceConfig dataSourceConfig = getDataSourceConfig(dataSourceId);
         List<FieldConfig> codegFields = CodegUtils.getAllFields(dataSourceConfig, tableName);
         CodegUtils.decoreteFields(dataSourceConfig, tableName, codegFields);
         this.fieldDecker.deckFields(codegFields);
-        return new ExPageList<FieldConfig>(codegFields);
+        return new PageList<FieldConfig>(codegFields);
     }
 
 

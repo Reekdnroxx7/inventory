@@ -1,9 +1,9 @@
 package com.x404.admin.manage.sys.dao;
 
 import com.x404.admin.manage.sys.entity.Task;
-import com.xc350.web.base.mybatis.dao.MybatisCriterion;
-import com.xc350.web.base.mybatis.dao.MybatisExample;
-import com.xc350.web.base.mybatis.dao.MybatisQuery;
+import com.x404.module.basedao.mybatis.dao.MybatisCriterion;
+import com.x404.module.basedao.mybatis.dao.MybatisExample;
+import com.x404.module.basedao.mybatis.dao.MybatisQuery;
 
 import java.text.MessageFormat;
 import java.util.List;

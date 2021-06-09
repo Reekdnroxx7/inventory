@@ -1,5 +1,6 @@
 package com.x404.admin.core.util;
 
+import com.x404.module.utils.UUIDUtils;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 

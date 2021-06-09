@@ -1,6 +1,6 @@
 package com.x404.admin.core.config;
 
-import com.x404.admin.core.support.config.DynamicProperties;
+import com.x404.module.dynconfig.DynamicProperties;
 
 import java.util.Properties;
 

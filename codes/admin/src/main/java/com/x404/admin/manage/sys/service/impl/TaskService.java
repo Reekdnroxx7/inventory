@@ -2,9 +2,8 @@ package com.x404.admin.manage.sys.service.impl;
 
 import com.x404.admin.manage.sys.dao.ITaskDao;
 import com.x404.admin.manage.sys.entity.Task;
-import com.xc350.web.base.mybatis.dao.MybatisExample;
-import com.xc350.web.base.query.PageList;
-import com.x404.admin.manage.sys.service.ITaskService;
+import com.x404.module.basedao.mybatis.dao.MybatisExample;
+import com.x404.module.basedao.query.PageList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +11,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Service
-public class TaskService implements ITaskService {
+public class TaskService   {
 
     @Autowired
     private ITaskDao taskDao;
@@ -81,13 +80,7 @@ public class TaskService implements ITaskService {
     }
 
 
-    /**
-     * 分页查询
-     *
-     * @param example
-     * @return
-     */
     public PageList<Task> page(MybatisExample example) {
-        return new PageList<Task>(taskDao.countByExample(example), taskDao.selectByExample(example));
+        return new PageList<Task>(taskDao.selectByExample(example),taskDao.countByExample(example));
     }
 }

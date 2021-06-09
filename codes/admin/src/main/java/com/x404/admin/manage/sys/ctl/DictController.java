@@ -1,10 +1,10 @@
 package com.x404.admin.manage.sys.ctl;
 
 import com.x404.admin.core.controller.BaseController;
-import com.x404.admin.core.hibernate.query.HibernateQuery;
+import com.x404.module.basedao.hibernate.HibernateQuery;
 import com.x404.admin.core.json.AjaxJson;
-import com.x404.admin.core.page.ExPageList;
-import com.x404.admin.core.query.HibernateQueryHelper;
+import com.x404.module.basedao.query.PageList;
+import com.x404.module.basedao.query.HibernateQueryHelper;
 import com.x404.admin.manage.sys.entity.Dict;
 import com.x404.admin.manage.sys.entity.DictGroup;
 import com.x404.admin.manage.sys.entity.Operation;
@@ -62,7 +62,7 @@ public class DictController extends BaseController {
 
     @RequestMapping(params = "method=listDictGroup")
     @ResponseBody
-    public ExPageList<DictGroup> listDictGroup(HttpServletRequest request, ExPageList<DictGroup> page) {
+    public PageList<DictGroup> listDictGroup(HttpServletRequest request, PageList<DictGroup> page) {
         HibernateQuery cq = HibernateQueryHelper.generateFromRequest(request, Operation.class);
         return dictGroupService.getPageList(cq, page);
     }
@@ -101,7 +101,7 @@ public class DictController extends BaseController {
 
     @RequestMapping(params = "method=listDict")
     @ResponseBody
-    public ExPageList<Dict> listDict(HttpServletRequest request, ExPageList<Dict> page) {
+    public PageList<Dict> listDict(HttpServletRequest request, PageList<Dict> page) {
         HibernateQuery cq = HibernateQueryHelper.generateFromRequest(request, Dict.class);
         return dictService.getPageList(cq, page);
     }

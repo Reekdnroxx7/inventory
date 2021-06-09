@@ -5,7 +5,7 @@
  */
 package com.x404.admin.manage.sys.dao.impl;
 
-import com.x404.admin.core.hibernate.dao.impl.HibernateDao;
+import com.x404.module.basedao.hibernate.impl.HibernateDao;
 import com.x404.admin.manage.sys.dao.IDictGroupDao;
 import com.x404.admin.manage.sys.entity.DictGroup;
 import org.springframework.stereotype.Repository;

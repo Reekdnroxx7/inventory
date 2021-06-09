@@ -1,7 +1,7 @@
 package com.x404.admin.manage.sys.service.impl;
 
-import com.x404.admin.core.hibernate.query.HibernateQuery;
-import com.x404.admin.core.page.ExPageList;
+import com.x404.module.basedao.hibernate.HibernateQuery;
+import com.x404.module.basedao.query.PageList;
 import com.x404.admin.manage.sys.entity.Config;
 import com.x404.admin.manage.sys.service.IConfigService;
 import com.x404.admin.manage.sys.dao.IConfigDao;
@@ -41,8 +41,8 @@ public class ConfigService implements IConfigService
         return configDao.findAll();
     }
 
-    public ExPageList<Config> getPageList(HibernateQuery cq,
-                                          ExPageList<Config> page) {
+    public PageList<Config> getPageList(HibernateQuery cq,
+                                        PageList<Config> page) {
         return configDao.getPageList(cq, page);
     }
 

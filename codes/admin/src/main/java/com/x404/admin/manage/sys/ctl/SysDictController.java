@@ -1,7 +1,7 @@
 package com.x404.admin.manage.sys.ctl;
 
 import com.x404.admin.core.controller.BaseController;
-import com.x404.admin.core.page.ExPageList;
+import com.x404.module.basedao.query.PageList;
 import com.x404.admin.manage.sys.entity.Dict;
 import com.x404.admin.manage.sys.entity.Icon;
 import com.x404.admin.manage.sys.entity.Org;
@@ -34,18 +34,18 @@ public class SysDictController extends BaseController {
 
     @RequestMapping(params = "method=iconList")
     @ResponseBody
-    public ExPageList<Icon> iconList() {
-        ExPageList<Icon> pageList = new ExPageList<Icon>();
+    public PageList<Icon> iconList() {
+        PageList<Icon> pageList = new PageList<Icon>();
         pageList.setResultList(IconUtils.getInstance().getIcons());
         return pageList;
     }
 
     @RequestMapping(params = "method=dictList")
     @ResponseBody
-    public ExPageList<Dict> dictList(HttpServletRequest request) {
+    public PageList<Dict> dictList(HttpServletRequest request) {
         String groupCode = request.getParameter("groupCode");
         List<Dict> dict = DictManager.getInstance().getDict(groupCode);
-        ExPageList<Dict> pageList = new ExPageList<Dict>();
+        PageList<Dict> pageList = new PageList<Dict>();
         pageList.setResultList(dict);
         return pageList;
     }

@@ -1,7 +1,7 @@
 package com.x404.admin.core.service;
 
-import com.x404.admin.core.hibernate.query.HibernateQuery;
-import com.x404.admin.core.page.ExPageList;
+import com.x404.module.basedao.hibernate.HibernateQuery;
+import com.x404.module.basedao.query.PageList;
 
 import java.io.Serializable;
 import java.util.List;
@@ -20,7 +20,7 @@ public interface IHibernateService<T> extends BaseService<T> {
 
     void delete(T entity);
 
-    ExPageList<T> getPageList(HibernateQuery cq, ExPageList<T> page);
+    PageList<T> getPageList(HibernateQuery cq, PageList<T> page);
 
     List<T> findHql(String hql, Object... param);
 

@@ -1,7 +1,7 @@
 package com.x404.admin.manage.sys.service.impl;
 
-import com.x404.admin.core.hibernate.query.HibernateQuery;
-import com.x404.admin.core.page.ExPageList;
+import com.x404.module.basedao.hibernate.HibernateQuery;
+import com.x404.module.basedao.query.PageList;
 import com.x404.admin.manage.sys.dao.IUserRoleDao;
 import com.x404.admin.manage.sys.entity.User;
 import com.x404.admin.manage.sys.service.IUserRoleService;
@@ -43,8 +43,8 @@ public class UserRoleService implements IUserRoleService
         userRoleDao.saveOrUpdate(entity);
     }
 
-    public ExPageList<UserRole> getPageList(HibernateQuery cq,
-                                            ExPageList<UserRole> page) {
+    public PageList<UserRole> getPageList(HibernateQuery cq,
+                                          PageList<UserRole> page) {
         return userRoleDao.getPageList(cq, page);
     }
 

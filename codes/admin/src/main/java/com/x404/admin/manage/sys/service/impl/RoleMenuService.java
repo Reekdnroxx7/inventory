@@ -1,10 +1,10 @@
 package com.x404.admin.manage.sys.service.impl;
 
-import com.x404.admin.core.hibernate.query.HibernateQuery;
+import com.x404.module.basedao.hibernate.HibernateQuery;
 import com.x404.admin.manage.sys.dao.IRoleMenuDao;
 import com.x404.admin.manage.sys.entity.RoleMenu;
 import com.x404.admin.manage.sys.service.IRoleMenuService;
-import com.x404.admin.core.page.ExPageList;
+import com.x404.module.basedao.query.PageList;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,8 +43,8 @@ public class RoleMenuService implements IRoleMenuService {
         roleMenuDao.saveOrUpdate(entity);
     }
 
-    public ExPageList<RoleMenu> getPageList(HibernateQuery cq,
-                                            ExPageList<RoleMenu> page) {
+    public PageList<RoleMenu> getPageList(HibernateQuery cq,
+                                          PageList<RoleMenu> page) {
         return roleMenuDao.getPageList(cq, page);
     }
 

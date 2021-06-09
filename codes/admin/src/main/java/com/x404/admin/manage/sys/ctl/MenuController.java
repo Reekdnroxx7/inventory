@@ -2,14 +2,14 @@ package com.x404.admin.manage.sys.ctl;
 
 import com.x404.admin.core.controller.BaseController;
 import com.x404.admin.core.json.AjaxJson;
-import com.x404.admin.core.query.HibernateQueryHelper;
+import com.x404.module.basedao.query.HibernateQueryHelper;
 import com.x404.admin.manage.sys.entity.Menu;
 import com.x404.admin.manage.sys.entity.Operation;
 import com.x404.admin.manage.sys.service.IMenuService;
 import com.x404.admin.manage.sys.service.IOperationService;
 import com.x404.admin.manage.sys.utils.MenuUtils;
-import com.x404.admin.core.hibernate.query.HibernateQuery;
-import com.x404.admin.core.page.ExPageList;
+import com.x404.module.basedao.hibernate.HibernateQuery;
+import com.x404.module.basedao.query.PageList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.ServletRequestUtils;
@@ -112,7 +112,7 @@ public class MenuController extends BaseController {
 
     @RequestMapping(params = "method=listOperation")
     @ResponseBody
-    public ExPageList<Operation> listOperation(HttpServletRequest request, ExPageList<Operation> page) {
+    public PageList<Operation> listOperation(HttpServletRequest request, PageList<Operation> page) {
         HibernateQuery cq = HibernateQueryHelper.generateFromRequest(request, Operation.class);
         return operationService.getPageList(cq, page);
     }

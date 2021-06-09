@@ -1,11 +1,13 @@
 package com.x404.admin.manage.sys.entity;
 
-import com.xc350.web.base.mybatis.dao.MybatisExample;
+
+import com.x404.module.basedao.mybatis.dao.MybatisExample;
 
 import java.util.List;
 
 
-public class TaskExample extends MybatisExample {
+public class TaskExample extends MybatisExample
+{
 
     public TaskExample andIdIsNull() {
         addCriterion("id is null");

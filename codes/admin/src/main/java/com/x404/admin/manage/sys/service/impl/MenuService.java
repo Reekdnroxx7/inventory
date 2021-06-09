@@ -1,8 +1,8 @@
 package com.x404.admin.manage.sys.service.impl;
 
-import com.x404.admin.core.hibernate.dao.impl.HibernateDao;
-import com.x404.admin.core.hibernate.query.HibernateQuery;
-import com.x404.admin.core.page.ExPageList;
+import com.x404.module.basedao.hibernate.impl.HibernateDao;
+import com.x404.module.basedao.hibernate.HibernateQuery;
+import com.x404.module.basedao.query.PageList;
 import com.x404.admin.manage.sys.service.IMenuService;
 import com.x404.admin.manage.sys.dao.IMenuDao;
 import com.x404.admin.manage.sys.entity.Menu;
@@ -42,7 +42,7 @@ public class MenuService extends HibernateDao<Menu> implements IMenuService
         menuDao.saveOrUpdate(entity);
     }
 
-    public ExPageList<Menu> getPageList(HibernateQuery cq, ExPageList<Menu> page) {
+    public PageList<Menu> getPageList(HibernateQuery cq, PageList<Menu> page) {
         return menuDao.getPageList(cq, page);
     }
 

@@ -1,7 +1,7 @@
 package com.x404.admin.manage.sys.service.impl;
 
-import com.x404.admin.core.hibernate.query.HibernateQuery;
-import com.x404.admin.core.page.ExPageList;
+import com.x404.module.basedao.hibernate.HibernateQuery;
+import com.x404.module.basedao.query.PageList;
 import com.x404.admin.manage.sys.entity.Icon;
 import com.x404.admin.manage.sys.dao.IIconDao;
 import com.x404.admin.manage.sys.service.IIconService;
@@ -47,7 +47,7 @@ public class IconService implements IIconService {
         iconDao.saveOrUpdate(entity);
     }
 
-    public ExPageList<Icon> getPageList(HibernateQuery cq, ExPageList<Icon> page) {
+    public PageList<Icon> getPageList(HibernateQuery cq, PageList<Icon> page) {
         return iconDao.getPageList(cq, page);
     }
 

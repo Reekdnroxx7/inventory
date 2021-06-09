@@ -5,7 +5,7 @@
  */
 package com.x404.admin.manage.sys.dao.impl;
 
-import com.x404.admin.core.hibernate.dao.impl.HibernateDao;
+import com.x404.module.basedao.hibernate.impl.HibernateDao;
 import com.x404.admin.manage.sys.dao.IDictDao;
 import com.x404.admin.manage.sys.entity.Dict;
 import org.hibernate.criterion.Order;

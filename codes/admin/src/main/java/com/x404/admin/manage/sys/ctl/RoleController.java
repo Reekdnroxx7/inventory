@@ -1,7 +1,7 @@
 package com.x404.admin.manage.sys.ctl;
 
 import com.x404.admin.core.json.AjaxJson;
-import com.x404.admin.core.query.HibernateQueryHelper;
+import com.x404.module.basedao.query.HibernateQueryHelper;
 import com.x404.admin.manage.sys.entity.Operation;
 import com.x404.admin.manage.sys.model.MenuRoleForm;
 import com.x404.admin.manage.sys.service.IRoleService;
@@ -11,8 +11,8 @@ import com.x404.admin.manage.sys.entity.Role;
 import com.x404.admin.manage.sys.entity.RoleMenu;
 import com.x404.admin.manage.sys.service.IRoleMenuService;
 import com.x404.admin.manage.sys.tools.MenuTree;
-import com.x404.admin.core.hibernate.query.HibernateQuery;
-import com.x404.admin.core.page.ExPageList;
+import com.x404.module.basedao.hibernate.HibernateQuery;
+import com.x404.module.basedao.query.PageList;
 import com.x404.admin.manage.sys.entity.Menu;
 import com.x404.admin.manage.sys.service.IMenuService;
 import org.apache.commons.lang.StringUtils;
@@ -86,8 +86,8 @@ public class RoleController {
 
     @RequestMapping(params = "method=listRole")
     @ResponseBody
-    public ExPageList<Role> listRole(HttpServletRequest request,
-                                     ExPageList<Role> page) {
+    public PageList<Role> listRole(HttpServletRequest request,
+                                   PageList<Role> page) {
         HibernateQuery cq = HibernateQueryHelper.generateFromRequest(request);
         return roleService.getPageList(cq, page);
     }

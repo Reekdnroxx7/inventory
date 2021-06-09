@@ -1,11 +1,13 @@
 package com.x404.admin.manage.codeg.entity;
 
-import com.xc350.web.base.mybatis.dao.MybatisExample;
+
+import com.x404.module.basedao.mybatis.dao.MybatisExample;
 
 import java.util.List;
 
 
-public class DatasourceConfigExample extends MybatisExample {
+public class DatasourceConfigExample extends MybatisExample
+{
 
     public MybatisExample andIdIsNull() {
         addCriterion("id is null");

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.x404.admin.core.controller.BaseController;
 import com.x404.admin.core.json.AjaxJson;
-import com.x404.admin.core.query.HibernateQueryHelper;
+import com.x404.module.basedao.query.HibernateQueryHelper;
 import com.x404.admin.core.util.PasswordUtil;
 import com.x404.admin.manage.sys.entity.User;
 import com.x404.admin.manage.sys.model.RoleEx;
@@ -15,8 +15,8 @@ import com.x404.admin.manage.sys.utils.OrgUtils;
 import com.x404.admin.manage.sys.utils.UserUtils;
 import com.x404.admin.manage.sys.entity.Role;
 import com.x404.admin.manage.sys.entity.UserRole;
-import com.x404.admin.core.hibernate.query.HibernateQuery;
-import com.x404.admin.core.page.ExPageList;
+import com.x404.module.basedao.hibernate.HibernateQuery;
+import com.x404.module.basedao.query.PageList;
 import com.x404.admin.manage.sys.entity.Org;
 import com.x404.admin.manage.sys.service.IUserService;
 import com.x404.admin.manage.sys.tools.UserInfo;
@@ -87,8 +87,8 @@ public class UserController extends BaseController {
 
     @RequestMapping(params = "method=listUser")
     @ResponseBody
-    public ExPageList<User> listUser(HttpServletRequest request,
-                                     ExPageList<User> page) {
+    public PageList<User> listUser(HttpServletRequest request,
+                                   PageList<User> page) {
         HibernateQuery cq = HibernateQueryHelper.generateFromRequest(request);
         String orgId = OrgUtils.getInstance().getRequestOrg().getId();
         List<String> orgIds = OrgUtils.getInstance().getAllChildIds(orgId);
@@ -144,7 +144,7 @@ public class UserController extends BaseController {
 
     @RequestMapping(params = "method=listUserRole")
     @ResponseBody
-    public ExPageList<RoleEx> listUserRole(HttpServletRequest request, User u) {
+    public PageList<RoleEx> listUserRole(HttpServletRequest request, User u) {
 
         // 第一步 修改用户的机构是否在 当前用户机构下。
         ensureAuth(u);
@@ -170,7 +170,7 @@ public class UserController extends BaseController {
             }
             roleExs.add(role);
         }
-        ExPageList<RoleEx> pageList = new ExPageList<RoleEx>();
+        PageList<RoleEx> pageList = new PageList<RoleEx>();
         pageList.setResultList(roleExs);
         pageList.setTotalCount(roleExs.size());
         return pageList;

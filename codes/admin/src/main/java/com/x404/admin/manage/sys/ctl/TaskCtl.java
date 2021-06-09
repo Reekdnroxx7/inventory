@@ -2,13 +2,13 @@ package com.x404.admin.manage.sys.ctl;
 
 import com.x404.admin.core.controller.BaseController;
 import com.x404.admin.core.json.AjaxJson;
-import com.x404.admin.core.util.UUIDUtils;
+import com.x404.module.utils.UUIDUtils;
 import com.x404.admin.manage.sys.entity.Task;
+import com.x404.admin.manage.sys.service.impl.TaskService;
 import com.x404.admin.manage.sys.tools.TaskManager;
-import com.xc350.web.base.mybatis.dao.MybatisExample;
-import com.xc350.web.base.mybatis.query.MybatisCriteriaHelper;
-import com.xc350.web.base.query.PageList;
-import com.x404.admin.manage.sys.service.ITaskService;
+import com.x404.module.basedao.mybatis.dao.MybatisExample;
+import com.x404.module.basedao.query.MybatisQueryHelper;
+import com.x404.module.basedao.query.PageList;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.quartz.SchedulerException;
@@ -27,10 +27,10 @@ import java.util.List;
 @RequestMapping("/task")
 public class TaskCtl extends BaseController implements InitializingBean {
     private final static Log LOG = LogFactory.getLog(TaskCtl.class);
-    private ITaskService taskService;
+    private TaskService taskService;
 
     @Autowired
-    public void setTaskService(ITaskService taskService) {
+    public void setTaskService(TaskService taskService) {
         this.taskService = taskService;
     }
 
@@ -40,7 +40,7 @@ public class TaskCtl extends BaseController implements InitializingBean {
      * 用mybatis实现页面的分页显示
      */
     public PageList<Task> listTask(HttpServletRequest request) {
-        MybatisExample mybatisExample = MybatisCriteriaHelper.generateFromRequest(request);
+        MybatisExample mybatisExample = MybatisQueryHelper.generateFromRequest(request);
 
         PageList<Task> list = taskService.page(mybatisExample);
         return list;

@@ -1,8 +1,8 @@
 package com.x404.module.basedao.mongo.dao.impl;
 
-import com.xc350.web.base.model.IdEntity;
-import com.xc350.web.base.mongo.dao.IMongoBaseDao;
-import com.xc350.web.base.utils.Reflections;
+import com.x404.module.utils.Reflections;
+import com.x404.module.basedao.IdEntity;
+import com.x404.module.basedao.mongo.dao.IMongoDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mapping.PropertyHandler;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -16,7 +16,8 @@ import org.springframework.util.ReflectionUtils;
 import java.io.Serializable;
 import java.util.List;
 
-public class MongodbDao<T extends IdEntity> implements IMongoBaseDao<T> {
+public class MongodbDao<T extends IdEntity> implements IMongoDao<T>
+{
 
 
     private MongoTemplate mongoTemplate;

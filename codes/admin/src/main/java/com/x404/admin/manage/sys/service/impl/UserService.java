@@ -4,8 +4,8 @@ import com.x404.admin.core.util.PasswordUtil;
 import com.x404.admin.manage.sys.dao.IUserDao;
 import com.x404.admin.manage.sys.entity.User;
 import com.x404.admin.manage.sys.entity.RoleMenu;
-import com.x404.admin.core.hibernate.query.HibernateQuery;
-import com.x404.admin.core.page.ExPageList;
+import com.x404.module.basedao.hibernate.HibernateQuery;
+import com.x404.module.basedao.query.PageList;
 import com.x404.admin.manage.sys.service.IUserService;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,7 +80,7 @@ public class UserService implements IUserService {
         userDao.saveOrUpdate(entity);
     }
 
-    public ExPageList<User> getPageList(HibernateQuery cq, ExPageList<User> page) {
+    public PageList<User> getPageList(HibernateQuery cq, PageList<User> page) {
         return userDao.getPageList(cq, page);
     }
 

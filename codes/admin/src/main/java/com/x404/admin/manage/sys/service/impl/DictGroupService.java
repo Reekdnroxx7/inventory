@@ -2,8 +2,8 @@ package com.x404.admin.manage.sys.service.impl;
 
 import com.x404.admin.manage.sys.dao.IDictGroupDao;
 import com.x404.admin.manage.sys.service.IDictGroupService;
-import com.x404.admin.core.hibernate.query.HibernateQuery;
-import com.x404.admin.core.page.ExPageList;
+import com.x404.module.basedao.hibernate.HibernateQuery;
+import com.x404.module.basedao.query.PageList;
 import com.x404.admin.manage.sys.entity.DictGroup;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,8 +40,8 @@ public class DictGroupService implements IDictGroupService {
         return dictGroupDao.findAll();
     }
 
-    public ExPageList<DictGroup> getPageList(HibernateQuery cq,
-                                             ExPageList<DictGroup> page) {
+    public PageList<DictGroup> getPageList(HibernateQuery cq,
+                                           PageList<DictGroup> page) {
         return dictGroupDao.getPageList(cq, page);
     }
 

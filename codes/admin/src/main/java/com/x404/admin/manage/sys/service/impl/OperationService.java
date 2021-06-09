@@ -1,7 +1,7 @@
 package com.x404.admin.manage.sys.service.impl;
 
-import com.x404.admin.core.hibernate.query.HibernateQuery;
-import com.x404.admin.core.page.ExPageList;
+import com.x404.module.basedao.hibernate.HibernateQuery;
+import com.x404.module.basedao.query.PageList;
 import com.x404.admin.manage.sys.dao.IOprationDao;
 import com.x404.admin.manage.sys.service.IOperationService;
 import com.x404.admin.manage.sys.entity.Operation;
@@ -52,8 +52,8 @@ public class OperationService implements IOperationService
         oprationDao.saveOrUpdate(entity);
     }
 
-    public ExPageList<Operation> getPageList(HibernateQuery cq,
-                                             ExPageList<Operation> page) {
+    public PageList<Operation> getPageList(HibernateQuery cq,
+                                           PageList<Operation> page) {
         return oprationDao.getPageList(cq, page);
     }
 

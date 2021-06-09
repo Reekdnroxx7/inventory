@@ -4,6 +4,7 @@ package com.x404.admin.core.util;
 import com.x404.admin.manage.sys.listener.OnlineListener;
 import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 
 /**
  * @author 张代浩
@@ -22,7 +23,7 @@ public class DBTypeUtil {
         if (ctx == null) {
             return retStr;//如果ctx为空，则服务器异常了
         } else {
-            org.springframework.orm.hibernate4.LocalSessionFactoryBean sf = (org.springframework.orm.hibernate4.LocalSessionFactoryBean) ctx.getBean("&sessionFactory");
+            LocalSessionFactoryBean sf = (LocalSessionFactoryBean) ctx.getBean("&sessionFactory");
             String dbdialect = sf.getHibernateProperties().getProperty("hibernate.dialect");
             log.debug(dbdialect);
             if (dbdialect.equals("org.hibernate.dialect.MySQLDialect")) {

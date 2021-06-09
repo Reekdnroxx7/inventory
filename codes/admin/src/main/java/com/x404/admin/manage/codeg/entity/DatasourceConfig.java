@@ -1,13 +1,15 @@
 package com.x404.admin.manage.codeg.entity;
 
-import com.xc350.web.base.model.IdEntity;
+
+import com.x404.module.basedao.IdEntity;
 
 /**
  * @author
  * @version V1.0
  * @Title: DatasourceConfig
  */
-public class DatasourceConfig implements IdEntity {
+public class DatasourceConfig implements IdEntity
+{
     private static final long serialVersionUID = 1L;
     /**
      * 主键

@@ -3,8 +3,8 @@ package com.x404.admin.manage.sys.service.impl;
 import com.x404.admin.manage.sys.dao.IDictDao;
 import com.x404.admin.manage.sys.entity.Dict;
 import com.x404.admin.manage.sys.service.IDictService;
-import com.x404.admin.core.hibernate.query.HibernateQuery;
-import com.x404.admin.core.page.ExPageList;
+import com.x404.module.basedao.hibernate.HibernateQuery;
+import com.x404.module.basedao.query.PageList;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,7 +36,7 @@ public class DictService implements IDictService
         dictDao.saveOrUpdate(entity);
     }
 
-    public ExPageList<Dict> getPageList(HibernateQuery cq, ExPageList<Dict> page) {
+    public PageList<Dict> getPageList(HibernateQuery cq, PageList<Dict> page) {
         return dictDao.getPageList(cq, page);
     }
 

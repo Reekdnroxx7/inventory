@@ -1,10 +1,10 @@
 package com.x404.admin.manage.sys.ctl;
 
 import com.x404.admin.core.controller.BaseController;
-import com.x404.admin.core.hibernate.query.HibernateQuery;
+import com.x404.module.basedao.hibernate.HibernateQuery;
 import com.x404.admin.core.json.AjaxJson;
-import com.x404.admin.core.page.ExPageList;
-import com.x404.admin.core.query.HibernateQueryHelper;
+import com.x404.module.basedao.query.PageList;
+import com.x404.module.basedao.query.HibernateQueryHelper;
 import com.x404.admin.core.util.UploadFile;
 import com.x404.admin.manage.sys.entity.Icon;
 import com.x404.admin.manage.sys.utils.IconUtils;
@@ -47,7 +47,7 @@ public class IconController extends BaseController {
 
     @RequestMapping(params = "method=list")
     @ResponseBody
-    public ExPageList<Icon> list(HttpServletRequest request, ExPageList<Icon> page) {
+    public PageList<Icon> list(HttpServletRequest request, PageList<Icon> page) {
         HibernateQuery cq = HibernateQueryHelper.generateFromRequest(request);
         return iconService.getPageList(cq, page);
     }

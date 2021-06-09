@@ -1,9 +1,9 @@
 package com.x404.admin.manage.sys.dao;
 
 
-import com.x404.admin.core.mybatis.annotation.MyBatisRepository;
+import com.x404.module.basedao.mybatis.MyBatisRepository;
 import com.x404.admin.manage.sys.entity.Task;
-import com.xc350.web.base.mybatis.dao.MybatisExample;
+import com.x404.module.basedao.mybatis.dao.MybatisExample;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
 

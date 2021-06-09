@@ -2,9 +2,8 @@ package com.x404.admin.manage.codeg.service.impl;
 
 import com.x404.admin.manage.codeg.dao.IDatasourceConfigDao;
 import com.x404.admin.manage.codeg.entity.DatasourceConfig;
-import com.x404.admin.manage.codeg.service.IDatasourceConfigService;
-import com.xc350.web.base.mybatis.dao.MybatisExample;
-import com.xc350.web.base.query.PageList;
+import com.x404.module.basedao.mybatis.dao.MybatisExample;
+import com.x404.module.basedao.query.PageList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +11,8 @@ import java.io.Serializable;
 import java.util.List;
 
 @Service
-public class DatasourceConfigService implements IDatasourceConfigService {
+public class DatasourceConfigService
+{
 
 
     @Autowired
@@ -33,7 +33,7 @@ public class DatasourceConfigService implements IDatasourceConfigService {
 
     public PageList<DatasourceConfig> page(MybatisExample mybatisExample) {
 
-        return new PageList<DatasourceConfig>(countByExample(mybatisExample), selectByExample(mybatisExample));
+        return new PageList<DatasourceConfig>(selectByExample(mybatisExample), countByExample(mybatisExample));
     }
 
     public int countByExample(MybatisExample mybatisExample) {
