@@ -1,7 +1,7 @@
 package com.x404.admin.manage.sys.dao;
 
 
-import com.x404.module.basedao.mybatis.MyBatisRepository;
+import com.x404.module.basedao.Repository;
 import com.x404.admin.manage.sys.entity.Task;
 import com.x404.module.basedao.mybatis.dao.MybatisExample;
 import org.apache.ibatis.annotations.*;
@@ -10,7 +10,7 @@ import org.apache.ibatis.type.JdbcType;
 import java.io.Serializable;
 import java.util.List;
 
-@MyBatisRepository
+@Repository.MyBatis
 public interface ITaskDao {
 
 

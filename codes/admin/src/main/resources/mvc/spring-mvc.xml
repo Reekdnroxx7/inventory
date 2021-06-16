@@ -5,11 +5,11 @@
 	   xmlns:p="http://www.springframework.org/schema/p"
 	   xmlns:context="http://www.springframework.org/schema/context"
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans
-		http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/beans/spring-beans-5.0.xsd
 		http://www.springframework.org/schema/context
-		http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/context/spring-context-5.0.xsd
          http://www.springframework.org/schema/mvc
-		http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd ">
+		http://www.springframework.org/schema/mvc/spring-mvc-5.0.xsd ">
 	<!-- 自动扫描controller包下的所有类，使其认为spring mvc的控制器 -->
 	<!-- 加载controller的时候,不加载service,因为此时事物并未生效,若此时加载了service,那么事物无法对service进行拦截 -->
 		<!-- 使用Annotation自动注册Bean,只扫描@Controller -->
@@ -28,19 +28,7 @@
 			<!--<bean class="com.xc350.web.spinage.busi.mvc.ObjectMapper"></bean>-->
 		<!--</property>-->
 	</bean>
-	<!-- 启动Spring MVC的注解功能，完成请求和注解POJO的映射， 配置一个基于注解的定制的WebBindingInitializer，解决日期转换问题，方法级别的处理器映射 -->
-	<bean
-		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
-		<property name="cacheSeconds" value="0" />
-		<property name="messageConverters">
-			<list>
-				<ref bean="mappingJacksonHttpMessageConverter" /><!-- json转换器 -->
-			</list>
-		</property>
-		<property name="webBindingInitializer">
-			<bean class="com.x404.admin.core.databind.MyWebBinding" />
-		</property>
-	</bean>
+
 	<!-- 默认的视图解析器 在上边的解析错误时使用 (默认使用html)- -->
 	<bean id="oaViewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
@@ -64,12 +52,8 @@
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
 		p:defaultEncoding="UTF-8">
-		<property name="maxUploadSize">
-			<value>104857600</value>
-		</property>
-		<property name="maxInMemorySize">
-			<value>4096</value>
-		</property>
+		<property name="maxUploadSize" value="104857600"/>
+		<property name="maxInMemorySize" value="4096"/>
 	</bean>
 
 	<!-- 异常处理类 -->
@@ -78,8 +62,8 @@
 	<!-- 系统错误转发配置[并记录错误日志] -->
 	<bean
 		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
-		<property name="defaultErrorView" value="500"></property>   <!-- 默认为500，系统错误(error.jsp) -->
-		<property name="defaultStatusCode" value="404"></property>
+		<property name="defaultErrorView" value="500"/>   <!-- 默认为500，系统错误(error.jsp) -->
+		<property name="defaultStatusCode" value="404"/>
 		<property name="statusCodes"><!-- 配置多个statusCode -->
 			<props>
 				<prop key="error">500</prop>  <!-- error.jsp -->

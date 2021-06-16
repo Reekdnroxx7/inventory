@@ -1,4 +1,4 @@
-package com.x404.module.repository;
+package com.x404.module.basedao;
 
 /**
  * Created by Administrator on 2017/12/23.
@@ -17,5 +17,21 @@ public class Repository {
 
     public static @interface Repository2 {
 
+    }
+
+    public static @interface MyBatis
+    {
+    }
+
+    public static @interface Mongo
+    {
+    }
+
+    public static @interface Jdbc
+    {
+    }
+
+    public static @interface Hibernate
+    {
     }
 }
